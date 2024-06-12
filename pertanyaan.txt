@@ -1,0 +1,2 @@
+1. Apakah package seperti "fmt", "time" itu bisa juga disebut built in 
+function di Golang?
