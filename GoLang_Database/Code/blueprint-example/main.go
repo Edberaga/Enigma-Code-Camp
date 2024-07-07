@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"geometry-bin/shape"
+	"github.com/Edberaga/Geomerty-Bin/"
 )
 
 func main() {
