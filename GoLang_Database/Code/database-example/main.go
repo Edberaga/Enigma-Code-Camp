@@ -32,6 +32,9 @@ func main() {
 	// updateStudent(student1)
 	// deleteStudent("9")
 	// students := getAllStudent()
+	// for i := 0; i < len(students); i++ {
+	// 	fmt.Println(students[i].Id, students[i].Name, students[i].Email, students[i].Address, students[i].BirthDate, students[i].Gender)
+	// }
 	// for _, student := range students {
 	// 	fmt.Println(student.Id, student.Name, student.Email, student.Address, student.BirthDate, student.Gender)
 	// }
@@ -61,16 +64,14 @@ func getStudentById(id string) entity.Student{
 func getAllStudent() []entity.Student {
 	db := connectDb()
 	defer db.Close()
-
-	sqlStatement := "SELECT * FROM mst_student;"
+	sqlStatement := "SELECT * FROM mst_student ORDER BY id;"
 	rows, err := db.Query(sqlStatement)
 	if err != nil {
 		panic(err)
 	}
 	defer rows.Close()
-
+	fmt.Println("Rows from statement: ", rows)
 	students := scanStudent(rows)
-
 	return students
 }
 
@@ -85,7 +86,6 @@ func scanStudent(rows *sql.Rows) []entity.Student {
 		if err != nil {
 			panic(err)
 		}
-
 		students = append(students, student)
 	}
 
